@@ -1,4 +1,3 @@
-import * as Faker from "faker"
 import { IFakerOption, IPluginMessage } from "./faker"
 
 figma.showUI(__html__, { height: 340, width: 240 })
@@ -34,15 +33,15 @@ function traverseSelection() {
   }
 }
 
-function replaceText(fakerOption: IFakerOption) {
+function replaceText(pluginMessage: IPluginMessage) {
+ 
   if (textNodes.length) {
-    const fakerMethodArray = fakerOption.methodName.split(".")
-    const fakerMethod = Faker[fakerMethodArray[0]][fakerMethodArray[1]]
-    for (const textNode of textNodes) {
+    textNodes.forEach((textNode, i) => {
       figma.loadFontAsync(textNode.fontName as FontName).then(() => {
-        textNode.characters = fakerMethod().toString()
+        textNode.characters = pluginMessage.data[i]
       })
-    }
+    })
+
   } else {
     figma.closePlugin("Select at least one text node before using Faker.")
   }
@@ -66,16 +65,36 @@ async function getLsRecents() {
   })
 }
 
+function uiCreateFakeData(fakerOption: IFakerOption) {
+  const newPluginMessage: IPluginMessage = {
+    type: "create-faker-text",
+    data: {
+      countNodes: textNodes.length,
+      fakerOption: fakerOption,
+    }
+  }
+  figma.ui.postMessage(newPluginMessage)
+} 
+
+
 figma.ui.onmessage = (pluginMessage: IPluginMessage) => {
-  if (pluginMessage.type === "run-faker") {
-    clearTextNodes()
-    traverseSelection()
-    replaceText(pluginMessage.data as IFakerOption)
-  }
-  if (pluginMessage.type === "set-ls-recents") {
-    setLsRecents(pluginMessage.data as Array<IFakerOption>)
-  }
-  if (pluginMessage.type === "get-ls-recents") {
-    getLsRecents()
+  switch (pluginMessage.type) {
+    case "run-faker":
+      clearTextNodes()
+      traverseSelection()
+      uiCreateFakeData(pluginMessage.data as IFakerOption)
+      break;
+
+    case "set-ls-recents":
+      setLsRecents(pluginMessage.data as Array<IFakerOption>)
+      break;
+    
+    case "get-ls-recents":
+      getLsRecents()
+      break;
+
+    case "replace-text":
+      replaceText(pluginMessage)
+      break;
   }
 }

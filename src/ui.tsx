@@ -3,9 +3,8 @@ import { CSSProperties } from "react"
 import * as ReactDOM from "react-dom"
 import fakerOptions from "./fakerOptions"
 import { IFakerOption, IFakerOptionGroup, IPluginMessage } from "./faker"
-
+import faker from './generator';
 import "./ui.css"
-import { string } from "prop-types"
 
 declare function require(path: string): any
 
@@ -26,6 +25,9 @@ class App extends React.Component<IProps, IState> {
   readonly state: IState = initialState
   private static searchInputRef = React.createRef<HTMLInputElement>()
 
+
+  send
+
   componentDidMount() {
     this.setSearchFocus()
     this.getLsRecents()
@@ -34,6 +36,9 @@ class App extends React.Component<IProps, IState> {
         const pluginMessage = event.data.pluginMessage as IPluginMessage
         if (pluginMessage.type === "ls-recents-ready") {
           this.setInitialRecents(pluginMessage.data as Array<IFakerOption>)
+        }
+        if (pluginMessage.type === "create-faker-text") {
+          this.replaceText(pluginMessage)
         }
       }
     }
@@ -226,6 +231,29 @@ class App extends React.Component<IProps, IState> {
     parent.postMessage(
       {
         pluginMessage: pluginMessage,
+      },
+      "*"
+    )
+  }
+
+  private replaceText = (pluginMessage: IPluginMessage) => {
+    const fakerTexts = [];
+    const count = pluginMessage.data["countNodes"]
+    const fakerMethodArray = pluginMessage.data["fakerOption"].methodName.split(".")
+    const fakerMethod = faker[fakerMethodArray[0]][fakerMethodArray[1]]
+
+    for (const i of Array(count)) {
+      fakerTexts.push(fakerMethod())
+    }
+
+    const newPluginMessage: IPluginMessage = {
+      type: "replace-text",
+      data: fakerTexts,
+    }
+  
+    parent.postMessage(
+      {
+        pluginMessage: newPluginMessage,
       },
       "*"
     )
