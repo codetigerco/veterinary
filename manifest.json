@@ -1,7 +1,10 @@
 {
-  "name": "Faker",
-  "id": "833836762121994814",
+  "name": "Veterinary",
+  "id": "1126488609443546572",
   "api": "1.0.0",
   "main": "dist/code.js",
-	"ui": "dist/ui.html"
+	"ui": "dist/ui.html",
+  "editorType": [
+    "figma"
+  ]
 }
