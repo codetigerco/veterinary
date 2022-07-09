@@ -8,6 +8,10 @@ const fakerOptions: IFakerOptions = [
         name: "Pet Name",
         methodName: "name.firstName"
       },
+      {
+        name: "Vet Name",
+        methodName: "name.findName"
+      },
     ]
   },
   {
