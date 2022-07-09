@@ -11,6 +11,55 @@ const fakerOptions: IFakerOptions = [
     ]
   },
   {
+    name: "Animal Breeds",
+    children: [
+      {
+        name: "Feline",
+        methodName: "animal.cat",
+      },
+      {
+        name: "Canine",
+        methodName: "animal.dog",
+      },
+      {
+        name: "Bird",
+        methodName: "animal.bird",
+      },
+      {
+        name: "Equine",
+        methodName: "animal.horse",
+      },
+      {
+        name: "Fish",
+        methodName: "animal.fish",
+      },
+      {
+        name: "Rabbit",
+        methodName: "animal.rabbit",
+      },
+      {
+        name: "Mustelids",
+        methodName: "animal.ferret",
+      },
+      {
+        name: "Rodent",
+        methodName: "animal.rodent",
+      },
+      {
+        name: "Bovidae",
+        methodName: "animal.cow",
+      },
+      {
+        name: "Suidae",
+        methodName: "animal.pig",
+      },
+      {
+        name: "Reptile",
+        methodName: "animal.snake",
+      },
+    ],
+  },
+  {
     name: "Medicine",
     children: [
       {
@@ -24,62 +73,25 @@ const fakerOptions: IFakerOptions = [
       {
         name: "Anti-biotic",
         methodName: "medicine.antibiotic"
-      },
-      
+      },  
     ]
   },
   {
-    name: "Animal Breeds",
+    name: "Date Times",
     children: [
       {
-        name: "Bird",
-        methodName: "animal.bird",
+        name: "Yesterday",
+        methodName: "datetime.yesterday",
       },
       {
-        name: "Feline",
-        methodName: "animal.cat",
+        name: "Today",
+        methodName: "datetime.today",
       },
       {
-        name: "Cetacean",
-        methodName: "animal.cetacean",
-      },
-      {
-        name: "Bovidae",
-        methodName: "animal.cow",
-      },
-      {
-        name: "Canine",
-        methodName: "animal.dog",
-      },
-      {
-        name: "Fish",
-        methodName: "animal.fish",
-      },
-      {
-        name: "Equine",
-        methodName: "animal.horse",
-      },
-      {
-        name: "Reptile",
-        methodName: "animal.snake",
-      },
-      {
-        name: "Rabbit",
-        methodName: "animal.rabbit",
-      },
-      {
-        name: "Suidae",
-        methodName: "animal.pig",
-      },
-      {
-        name: "Mustelids",
-        methodName: "animal.ferret",
-      },
-      {
-        name: "Rodent",
-        methodName: "animal.rodent",
-      },
-    ],
+        name: "Future",
+        methodName: "datetime.future",
+      }
+    ]
   },
   {
     name: "Address",
