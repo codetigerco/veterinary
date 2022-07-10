@@ -12,6 +12,10 @@ const fakerOptions: IFakerOptions = [
         name: "Vet Name",
         methodName: "name.findName"
       },
+      {
+        name: "Vet Hospital Name",
+        methodName: "name.veterinary"
+      },
     ]
   },
   {

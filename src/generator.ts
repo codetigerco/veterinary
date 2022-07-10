@@ -5,7 +5,10 @@ import entries from './entries';
 
 export default {
     address: faker.address,
-    name: faker.name,
+    name: {
+        veterinary: () => faker.helpers.arrayElement(entries.VetClinicals),
+        ...faker.name
+    },
     animal: {
         pig: () => faker.helpers.arrayElement(entries.Pigs),
         ferret: () => faker.helpers.arrayElement(entries.Ferrets),
