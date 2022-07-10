@@ -1,11 +1,17 @@
-# Figma Faker Plugin
+# Figma Veterinary Plugin
 
-![Faker](banner-v3.png)
+A copy of the faker plugin for the veterinary industry
 
-Quickly generate realistic placeholder text. Names, emails, URLs, headlines, and more.
+Quickly generate realistic placeholder text. Names, emails, URLs, headlines, and more for veretinarians.
 Faker is built on top of [faker.js](https://github.com/Marak/faker.js).
 
-## Data Included
+## Veterinary Data Included
++ Animal Breeds
++ Medicine Names
++ Human centric date times format
+
+
+## Faker Data Included
 
 + Names
 + Addresses
@@ -31,8 +37,8 @@ Faker is built on top of [faker.js](https://github.com/Marak/faker.js).
 
 First clone this repository
 ```shell
-git clone https://github.com/coryetzkorn/figma-faker
-cd figma-faker
+git clone https://github.com/codetigerco/veterinary-faker
+cd veterinary-faker
 ```
 
 Install dependencies & build files
@@ -48,8 +54,11 @@ Done! Now access via _Plugins -> Development -> Faker_
 ## To-do
 
 - [ ] Better / more human date formatting
-- [ ] Add support for placeholder images
+- [ ] Add support for Pet placeholder and Veterinarian Images
+- [ ] Add Veterinarian Names
+- [ ] Add Animal Vaccines and Animal Medication
 
-## Author
+
+## Original Author
 
 Cory Etzkorn ([Twitter](https://twitter.com/coryetzkorn))
