@@ -2,6 +2,15 @@ import { IFakerOptions } from "./faker"
 
 const fakerOptions: IFakerOptions = [
   {
+    name: "Pictures",
+    children: [
+      {
+        name: "Animal",
+        methodName: "image.animals",
+      }
+    ]
+  },
+  {
     name: "Name",
     children: [
       {
@@ -85,7 +94,7 @@ const fakerOptions: IFakerOptions = [
     ]
   },
   {
-    name: "Date Times",
+    name: "Datetimes",
     children: [
       {
         name: "Yesterday",
@@ -98,7 +107,11 @@ const fakerOptions: IFakerOptions = [
       {
         name: "Future",
         methodName: "datetime.future",
-      }
+      },
+      {
+        name: "Past",
+        methodName: "datetime.past",
+      } 
     ]
   },
   {

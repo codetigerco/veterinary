@@ -25,9 +25,6 @@ class App extends React.Component<IProps, IState> {
   readonly state: IState = initialState
   private static searchInputRef = React.createRef<HTMLInputElement>()
 
-
-  send
-
   componentDidMount() {
     this.setSearchFocus()
     this.getLsRecents()
@@ -244,6 +241,11 @@ class App extends React.Component<IProps, IState> {
 
     for (const i of Array(count)) {
       fakerTexts.push(fakerMethod())
+    }
+    if (fakerMethodArray[1]=="animals") {
+      new Promise(async (r) => {
+        const arrayBuffer = await (await fetch(fakerMethod())).arrayBuffer();
+      });
     }
 
     const newPluginMessage: IPluginMessage = {

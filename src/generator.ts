@@ -36,11 +36,19 @@ export default {
             return `Today at ${date.format('h:mm a')}`
         },
         future: () => {
-            let future = faker.date.future();
+            let future = faker.date.future(3);
             let date = dayjs(future);
             
             return date.format('ddd M/D/YYYY h:mm a');
-        }
-    }
+        },
+        past: () => {
+            let future = faker.date.past(3);
+            let date = dayjs(future);
+            
+            return date.format('ddd M/D/YYYY h:mm a');
+        },
+        
+    },
+    image: faker.image
 
 }
